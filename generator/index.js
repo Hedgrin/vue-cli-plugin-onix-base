@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 module.exports = (api, opts, rootOpts) => {
   api.extendPackage({
     dependencies: {
@@ -17,6 +19,10 @@ module.exports = (api, opts, rootOpts) => {
       "node-sass": "^4.12.0",
     }
   })
-
+  api.onCreateComplete(() => {
+    fs.unlinkSync(api.resolve('src/views/Home.vue'));
+    fs.unlinkSync(api.resolve('src/views/About.vue'));
+    fs.unlinkSync(api.resolve('src/components/HelloWorld.vue'));
+  });
   api.render(`./templates/default`)
 }
