@@ -13,6 +13,8 @@ module.exports = (api, opts, rootOpts) => {
       "pug": "^3.0.2",
       "pug-plain-loader": "^1.1.0",
       "sass-loader": "^8.0.2",
+      "lint-staged": "^9.5.0",
+      "node-sass": "^4.12.0",
     }
   })
 
