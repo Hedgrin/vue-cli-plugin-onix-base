@@ -6,9 +6,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Akryum/vue-cli-plugin-apollo.git"
+    "url": "git+https://github.com/Hedgrin/vue-cli-plugin-onix-base"
   },
-  "homepage": "https://github.com/Akryum/vue-cli-plugin-apollo#readme",
+  "homepage": "https://github.com/Hedgrin/vue-cli-plugin-onix-base#readme",
   "author": "Eugen Dzubenko (eugen.dzubenko@onix-systems.com)",
   "license": "MIT"
 }
