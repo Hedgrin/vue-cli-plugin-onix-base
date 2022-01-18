@@ -12,6 +12,7 @@ module.exports = (api, opts, rootOpts) => {
       "@prettier/plugin-pug": "^1.19.1",
       "pug": "^3.0.2",
       "pug-plain-loader": "^1.1.0",
+      "sass-loader": "^8.0.2",
     }
   })
 
