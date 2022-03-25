@@ -1,4 +1,13 @@
 module.exports = {
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: `
+        @import '~@/scss/__colors.scss';
+        `
+      }
+    }
+  },
   pwa: {
     name: "OnixBase",
     themeColor: "#FFFFFF",
