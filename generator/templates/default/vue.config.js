@@ -3,7 +3,7 @@ module.exports = {
     loaderOptions: {
       sass: {
         prependData: `
-        @import '~@/scss/__colors.scss';
+        @import '~@/scss/_colors.scss';
         `
       }
     }
