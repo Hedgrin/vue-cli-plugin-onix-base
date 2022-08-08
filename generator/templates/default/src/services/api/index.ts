@@ -27,58 +27,58 @@ function subscribeTokenRefresh(cb: Subscriber): void {
 }
 
 axiosClient.interceptors.request.use(
-    (request) => {
-      if (request.headers && userStore.accessToken) {
-        request.headers.Authorization = `Bearer ${userStore.accessToken}`;
-      }
-      return request;
-    },
-    (error) => {
-      return Promise.reject(error);
+  (request) => {
+    if (request.headers && userStore.accessToken) {
+      request.headers.Authorization = `Bearer ${userStore.accessToken}`;
     }
+    return request;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
 );
 
 axiosClient.interceptors.response.use(
-    function (response) {
-      return response;
-    },
-    function (error) {
-      const originalRequest = error.config;
-      const refreshToken: string | null = userStore.refreshToken;
-      if (error.response.status === 401) {
-        if (refreshToken) {
-          if (!isRefreshing) {
-            isRefreshing = true;
-            axios
-                .post(`${baseURL}/auth/refresh-token`, {
-                  refreshToken: refreshToken,
-                })
-                .then((response) => {
-                  const { accessToken, refreshToken } =
-                      response.data.data.attributes;
-                  userStore.setTokens({ accessToken, refreshToken });
-                  isRefreshing = false;
-                  onRefreshed(accessToken);
-                  subscribers = [];
-                })
-                .catch(() => {
-                  userStore.clear();
-                  router.push("/login");
-                });
-          }
-          return new Promise((resolve) => {
-            subscribeTokenRefresh((token) => {
-              originalRequest.headers.Authorization = `Bearer ${token}`;
-              resolve(axiosClient(originalRequest));
+  function (response) {
+    return response;
+  },
+  function (error) {
+    const originalRequest = error.config;
+    const refreshToken: string | null = userStore.refreshToken;
+    if (error.response.status === 401) {
+      if (refreshToken) {
+        if (!isRefreshing) {
+          isRefreshing = true;
+          axios
+            .post(`${baseURL}/auth/refresh-token`, {
+              refreshToken: refreshToken,
+            })
+            .then((response) => {
+              const { accessToken, refreshToken } =
+                response.data.data.attributes;
+              userStore.setTokens({ accessToken, refreshToken });
+              isRefreshing = false;
+              onRefreshed(accessToken);
+              subscribers = [];
+            })
+            .catch(() => {
+              userStore.clear();
+              router.push("/login");
             });
-          });
-        } else {
-          userStore.clear();
-          router.push("/login");
         }
+        return new Promise((resolve) => {
+          subscribeTokenRefresh((token) => {
+            originalRequest.headers.Authorization = `Bearer ${token}`;
+            resolve(axiosClient(originalRequest));
+          });
+        });
+      } else {
+        userStore.clear();
+        router.push("/login");
       }
-      return Promise.reject(error);
     }
+    return Promise.reject(error);
+  }
 );
 
 export default axiosClient;

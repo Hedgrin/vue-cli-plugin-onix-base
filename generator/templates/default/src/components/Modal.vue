@@ -1,12 +1,12 @@
 <template lang="pug">
-  teleport(to="body")
-    transition(name="fade")
-      .modal(v-if="isOpen")
-        .modal--backdrop(@click="close")
-        .modal--container
-          .modal--wrapper
-            .modal--close(@click="close")
-            slot(name="content")
+teleport(to="body")
+  transition(name="fade")
+    .modal(v-if="isOpen")
+      .modal--backdrop(@click="close")
+      .modal--container
+        .modal--wrapper
+          .modal--close(@click="close")
+          slot(name="content")
 </template>
 
 <script lang="ts" setup>
