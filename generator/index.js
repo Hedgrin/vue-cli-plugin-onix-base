@@ -22,8 +22,8 @@ module.exports = (api, opts, rootOpts) => {
     }
   })
   api.onCreateComplete(() => {
-    fs.unlinkSync(api.resolve('src/views/Home.vue'));
-    fs.unlinkSync(api.resolve('src/views/About.vue'));
+    fs.unlinkSync(api.resolve('src/views/HomeView.vue'));
+    fs.unlinkSync(api.resolve('src/views/AboutView.vue'));
     fs.unlinkSync(api.resolve('src/components/HelloWorld.vue'));
   });
   api.render(`./templates/default`)
