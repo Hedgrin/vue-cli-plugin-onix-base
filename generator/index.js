@@ -21,5 +21,10 @@ module.exports = (api, opts, rootOpts) => {
       "vue-cli-plugin-pinia": "^0.1.4",
     }
   })
+  api.onCreateComplete(() => {
+    fs.unlinkSync(api.resolve('src/views/HomeView.vue'));
+    fs.unlinkSync(api.resolve('src/views/AboutView.vue'));
+    fs.unlinkSync(api.resolve('src/components/HelloWorld.vue'));
+  });
   api.render(`./templates/default`)
 }
