@@ -15,6 +15,7 @@ module.exports = (api, opts, rootOpts) => {
       "@prettier/plugin-pug": "^1.20.1",
       "pug": "^3.0.2",
       "pug-plain-loader": "^1.1.0",
+      "prerender-spa-plugin-next": "^4.2.3",
       "sass": "^1.54.3",
       "sass-loader": "^12.0.0",
       "lint-staged": "^9.5.0",
