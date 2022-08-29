@@ -20,6 +20,8 @@ module.exports = (api, opts, rootOpts) => {
       "sass-loader": "^12.0.0",
       "lint-staged": "^9.5.0",
       "vue-cli-plugin-pinia": "^0.1.4",
+      "vue-eslint-parser": "^9.0.3",
+      "eslint-plugin-vue-pug": "^0.5.4",
     }
   })
   api.onCreateComplete(() => {
