@@ -3,6 +3,8 @@ const fs = require('fs');
 module.exports = (api, opts, rootOpts) => {
   api.extendPackage({
     dependencies: {
+      "@sentry/tracing": "^7.13.0",
+      "@sentry/vue": "^7.13.0",
       "@vuelidate/core": "^2.0.0-alpha.44",
       "@vuelidate/validators": "^2.0.0-alpha.31",
       "axios": "^0.24.0",
