@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-onix-base",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "vue-cli plugin to quick bootstrap project based on Onix-Systems standards",
   "dependencies": {
   },
